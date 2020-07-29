@@ -1,0 +1,329 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.input-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(./images/main-background.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h2{
+    font-size: 5.5em;
+}
+
+.input-div-main{
+    padding: 20px 30px;
+}
+
+.input-container{
+    height: 70vh;
+    padding: 20px;
+}
+
+select, textarea, #zip{
+    height: 35px;
+    opacity: 0.5;
+}
+
+select[name="countries"]{
+    width: 100%;
+    border-radius: 10px;
+}
+
+select[name="cities"]{
+    width: 48%;
+    border-radius: 10px;
+}
+
+#filter{
+    margin: 20px 0;
+}
+
+#zip{
+    width: 48%;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+label{
+    margin: 0 15px;
+}
+
+.btn{
+    border-radius: 18px;
+    width: 100px;
+}
+
+textarea{
+    width: 48%;
+    float: right;
+    border-radius: 10px;
+    margin-top: 0px;
+}
+
+textarea::placeholder{
+    line-height: 30px;
+}
+
+button{
+    margin-top: 30px;
+    border-radius: 10px;
+    color: #0b0c5d;
+    background-color: #d6e3e9;
+    font-size: 20px;
+    border: none;
+    box-shadow: 3px 3px #c2cdef;
+}
+
+button:hover{
+    background-color: #0b0c5d;
+    color: white;
+}
+
+.output-text{
+    position: relative;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 40%;
+    flex-grow: 1;
+    z-index: 1;
+    flex-direction: column;
+}
+
+.output-img{
+    height: 100%;
+    flex: 0 0 50%;
+    flex-grow: 1;
+    position: relative;
+}
+
+.temperature{
+    position: absolute;
+    width: 14.1em;
+    z-index: 1;
+}
+
+.temperature img{
+    display: inline-block;
+    margin-top: 20px;
+    height: 100px;
+    transform: scaleX(-1);
+}
+
+.temperature h3{
+    float: right;
+    font-size: 7em;
+    margin:0;
+}
+
+.weather-output{
+    display: flex;
+}
+
+.weather-label{
+    float:left;
+}
+
+.weather-value{
+    margin-left: 6.5em;
+    float:right;
+}
+
+sup{
+    font-size: 30px;
+}
+
+.output-div{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+
+/* RAIN */
+.rain-output-div{
+    background-color: #add4f1;
+}
+
+.rain-img{
+    width: 100%;
+    height: 100%;
+}
+
+.rain-output-text{
+    background-color: #add4f1;
+}
+
+.rain-output-img{
+    background-color: #add4f1;
+}
+
+.rain-weather-title{
+    color: #3a5b86;
+}
+
+.rain-weather-output{
+    color:#fdfefd;
+}
+
+.rain-temperature{
+    top: 57%;
+    left: 118%;
+    color: #fdfefd;
+}
+
+
+/* SNOW */
+
+.snow-output-div{
+    background-color: white;
+}
+
+.snow-weather-title{
+    color: #3da5ba;
+}
+
+.snow-weather-output{
+    color:#3e3e3c;
+}
+
+/* CLOUDS */
+
+.clouds-output-div{
+    background-color: #014076;
+}
+
+.clouds-output-text{
+    background-color: #014076;
+}
+
+.clouds-output-img{
+    background-color: #014076;
+}
+
+.clouds-weather-title{
+    color: #d6b4bc;
+}
+
+.clouds-weather-output{
+    color: #d6b4bc;
+}
+
+
+/* THUNDER */
+
+.thunder-output-div{
+    background-color: #014076;
+}
+
+.thunder-output-text{
+    background-color: #272940;
+}
+
+.thunder-output-img{
+    background-color: #272940;
+}
+
+.thunder-weather-title{
+    color: #f6c657;
+}
+
+.thunder-weather-output{
+    color: #fbfbfb;
+}
+
+
+/* THINGS IN COMMON BETWEEN WEATHER */
+
+.snow-temperature, .clouds-temperature, .thunder-temperature{
+    top: 60%;
+    left: 95%;
+    color: #3e3e3c;
+}
+
+.clouds-temperature h3, .thunder-temperature h3{
+    color: #bbc3b0;
+}
+
+.snow-img, .clouds-img, .thunder-img{
+    position: absolute;
+    right: 5%;
+    bottom: 0%;
+    height: 95%;
+    display: block;
+}
+
+/* MEDIA */
+
+@media only screen and (max-width: 1147px){
+    .snow-output-text{
+        position: static;
+    }
+    .snow-temperature{
+        position: static;
+        margin-left: -60px;
+    }
+    .snow-img{
+        height: 75%;
+    }
+
+    html, body{
+        overflow-x: hidden;
+    }
+
+    body{
+        position: relative;
+    }
+}
+
+
+@media only screen and (max-width: 1105px){
+    .clouds-output-text, .thunder-output-text{
+        position: static;
+    }
+    .clouds-temperature, .thunder-temperature{
+        position: static;
+        margin-left: -60px;
+    }
+    .clouds-img, .thunder-img{
+        height: 75%;
+        z-index: 1;
+    }
+}
+
+
+@media only screen and (max-width: 925px){
+    .rain-output-text{
+        position: static;
+    }
+    .rain-temperature{
+        position: static;
+        margin-left: -60px;
+    }
+}
+
+
+@media only screen and (max-width: 853px){
+
+    .weather-value{
+        margin-left: 5.5em;
+    }
+
+    .output-text{
+        font-size: 1.1em;
+    }
+
+    .temperature img{
+        height: 70px;
+    }
+}
+

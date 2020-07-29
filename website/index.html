@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <div id="project">
+
+            <div class="input-div">
+                <div class="input-container">
+                    
+                    <h2 class="text-center"><span>Your</span> Weather</h2>
+    
+                    <div class="input-div-main">
+    
+                        <select name="countries" id="countries">
+                            <option value="holder" selected disabled hidden>Choose a country</option>
+                        </select>
+                
+                        <div class="btn-group-toggle" id='filter'>
+                            <label class="btn btn-primary active" for="cityButton">
+                                <input  type="radio" id="cityButton" name="weather" value="city" autocomplete="off" checked> City
+                            </label>
+                            
+                            <label class="btn btn-primary" for="zipButton">
+                                <input type="radio" id="zipButton" name="weather" value="zip">Zip Code
+                            </label>
+                        </div>
+                        
+                        <select name="cities" id="cities">
+                            <option value="holder" selected disabled hidden>Choose a city</option>
+                        </select>
+                
+                        <input hidden type="text" id='zip' placeholder="enter zip code here" required>
+                
+                        <textarea id="feelings" name="feelings" placeholder="Feelings"></textarea>
+                        <div class="text-center">
+                            <button id="generate">Generate</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
