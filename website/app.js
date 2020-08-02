@@ -1,22 +1,22 @@
 const radios = document.querySelectorAll("input[name='weather']");
 const filter = document.getElementById('filter');
 const search = document.getElementById('zip');
-const entryHolder = document.getElementById('entryHolder');
 const generate = document.getElementById('generate');
 const countriesList = document.getElementById('countries');
 const citiesList = document.getElementById('cities');
+// Personal API Key for OpenWeatherMap API
 const apiKey = 'ec18dab59412aefcd75b503d8de905d8';
 let zipCode;
 let countryCode;
 let feelings = '';
 let apiLink;
 
-
+// Get the Current Date
 const dateObj = new Date();
 const date = `${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()}`;
 
 
-
+// fetch result of 20+ cities from the selected country
 const getCitiesList = async (country) => {
     await new Promise(r => setTimeout(r, 1000));
 
@@ -56,12 +56,6 @@ const getCitiesList = async (country) => {
     citiesList.appendChild(documentFragment);
 }
 
-
-
-fetch('https://restcountries.eu/rest/v2/all')
-.then(result => result.json())
-.then(json => console.log(json));
-
 // Creates select element with all the countries in the world
 window.addEventListener('load', async ()=>{
 
@@ -94,6 +88,7 @@ countriesList.addEventListener('change', e => {
     
 });
 
+// change apiLink value depending on selected city
 citiesList.addEventListener('change', e => {
     apiLink = `https://api.openweathermap.org/data/2.5/weather?q=${e.target.value},${countryCode}&appid=${apiKey}`;
 });
@@ -115,6 +110,7 @@ filter.addEventListener('change', () => {
 });
 
 
+// Event listener to add function to existing HTML DOM element
 generate.addEventListener('click', () => {
 
     if(radios[1].checked){
@@ -150,6 +146,8 @@ generate.addEventListener('click', () => {
 
 });
 
+
+/* Function to GET Web API Data*/
 const getWeather = async () => {
     const result = await fetch(apiLink);
 
@@ -171,9 +169,7 @@ const getWeather = async () => {
 }
 
 
-
-
-
+/* Function to POST data */
 const postData = async (url, data) =>{
     const result = await fetch(url, {
         method: 'POST',
@@ -193,6 +189,8 @@ const postData = async (url, data) =>{
     }
 }
 
+
+/* Function to GET Project Data */
 const updateUI = async () => {
     const result = await fetch('/sendData');
     
@@ -202,7 +200,7 @@ const updateUI = async () => {
         const weatherResult = document.querySelector('.output-div');
         const appName = document.querySelector('span');
 
-        appName.innerText = data[0].city;
+        appName.innerText = data.city;
 
         if(weatherResult !== null){
             weatherResult.remove();
@@ -211,16 +209,16 @@ const updateUI = async () => {
         const fragment = document.createDocumentFragment();
         let weatherType;
 
-        if(data[0].weatherId >= 200 && data[0].weatherId < 233){
+        if(data.weatherId >= 200 && data.weatherId < 233){
             weatherType = "thunder";
         }
-        else if( (data[0].weatherId >= 300 && data[0].weatherId < 322) || (data[0].weatherId >= 500 && data[0].weatherId < 532) ){
+        else if( (data.weatherId >= 300 && data.weatherId < 322) || (data.weatherId >= 500 && data.weatherId < 532) ){
             weatherType = "rain";
         }
-        else if(data[0].weatherId >= 600 && data[0].weatherId < 623){
+        else if(data.weatherId >= 600 && data.weatherId < 623){
             weatherType = "snow";
         }
-        else if(data[0].weatherId >= 800 && data[0].weatherId < 805){
+        else if(data.weatherId >= 800 && data.weatherId < 805){
             weatherType = "clouds";
         }
 
@@ -230,9 +228,9 @@ const updateUI = async () => {
                                 <div class="output-text ${weatherType}-output-text">
                                     <div>
                                         <div class="${weatherType}-weather-title">
-                                            <h1>${data[0].city}, ${data[0].country}</h1>
-                                            <h3 id="date">${data[0].date}</h3>
-                                            <h3>${data[0].description}</h3>
+                                            <h1>${data.city}, ${data.country}</h1>
+                                            <h3 id="date">${data.date}</h3>
+                                            <h3>${data.description}</h3>
                                         </div>
 
                                         <div class="weather-output ${weatherType}-weather-output">
@@ -242,23 +240,23 @@ const updateUI = async () => {
                                                 <h3 id="wind-speed">Wind Speed</h3>
                                                 <h3 id="sunrise">Sunrise</h3>
                                                 <h3 id="sunset">Sunset</h3>
-                                                <h3 id="feelingsValue">Feelings</h3>
+                                                <h3 id="content">Feelings</h3>
                                             </div>
 
                                             <div class="weather-value">
-                                                <h3>${data[0].feelsLike.toFixed(0)}°c</h3>
-                                                <h3>${data[0].humidity}%</h3>
-                                                <h3>${data[0].windSpeed} m/s</h3>
-                                                <h3>${data[0].sunrise}</h3>
-                                                <h3>${data[0].sunset}</h3>
-                                                <h3>${data[0].feelings}<h3>
+                                                <h3>${data.feelsLike.toFixed(0)}°c</h3>
+                                                <h3>${data.humidity}%</h3>
+                                                <h3>${data.windSpeed} m/s</h3>
+                                                <h3>${data.sunrise}</h3>
+                                                <h3>${data.sunset}</h3>
+                                                <h3>${data.feelings}<h3>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="temperature ${weatherType}-temperature">
-                                        <img src="http://openweathermap.org/img/w/${data[0].icon}.png" id="icon"></img>
-                                        <h3 id="temp">${data[0].temp.toFixed(0)}<sup>°C</sup></h3>
+                                        <img src="http://openweathermap.org/img/w/${data.icon}.png" id="icon"></img>
+                                        <h3 id="temp">${data.temp.toFixed(0)}<sup>°C</sup></h3>
                                     </div>
                                 </div>
 
