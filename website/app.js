@@ -221,8 +221,9 @@ const updateUI = async () => {
         else if(data.weatherId >= 800 && data.weatherId < 805){
             weatherType = "clouds";
         }
-
-        console.log(weatherType);
+        else{
+            weatherType = "clouds";
+        }
 
         const weather = `<div class="output-div ${weatherType}-output-div">
                                 <div class="output-text ${weatherType}-output-text">

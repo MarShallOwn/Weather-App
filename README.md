@@ -4,6 +4,8 @@
 
 Developed weather application using OpenWeatherMap , RESTCountries and countries-cities API.
 
+It is still not a finished project as there are more designs that should be added
+
 ---
 ## Requirements
 
