@@ -6,6 +6,8 @@ Developed weather application using OpenWeatherMap , RESTCountries and countries
 
 It is still not a finished project as there are more designs that should be added
 
+ [To view website click here](http://weather-app-weather-app.apps.us-east-2.starter.openshift-online.com/)
+
 ---
 ## Requirements
 
